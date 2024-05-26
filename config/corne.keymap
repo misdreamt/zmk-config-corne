@@ -9,9 +9,9 @@
 #include <dt-bindings/zmk/bt.h>
 
 #define BAS_L 0
-#define NAV_L 1
-#define NUM_L 2
-#define SYM_L 3
+#define SYM_L 1
+#define NAV_L 2
+#define NUM_L 3
 
 #define AS(keycode) &as LS(keycode) keycode
 
@@ -57,44 +57,58 @@
 // |  Q  |  W  |  E  |  R  |  T  |     |  Y  |  U  |  I  |  O  |  P  |
 // |  A  |  S  |  D  |  F  |  G  |     |  H  |  J  |  K  |  L  |  '  | 
 // |  Z  |  X  |  C  |  V  |  B  |     |  N  |  M  |  ,  |  .  |  ?  |
-//             | LWR | RSE | SPC |     | BSP | RSE | LWR |
-                        display-name = "Base";
+//             | NAV | NUM | SPC |     | BSP |     |     |
+                        display-name = "BAS;
                         bindings = <
-   &kp Q &kp W &kp E &kp R &kp T         &kp Y    &kp U  &kp I      &kp O    &kp P
-   LS(A) LC(S) LA(D) LG(F) &kp G         &kp H    RG(J)  RA(K)      RC(L)    RS(SQT)
-   LS(Z) &kp X &kp C &kp V &kp B         &kp N    &kp M  &kp COMMA  &kp DOT  RS(FSLH)
-               &mo 1 &mo 2 &kp SPACE     &kp BSPC &mo 2  &mo 1
+   &kp Q  &kp W  &kp E  &kp R  &kp T         &kp Y     &kp U  &kp I      &kp O    &kp P
+   LS(A)  LC(S)  LA(D)  LG(F)  &kp G         &kp H     RG(J)  RA(K)      RC(L)    RS(SQT)
+   LS(Z)  &kp X  &kp C  &kp V  &kp B         &kp N     &kp M  &kp COMMA  &kp DOT  RS(FSLH)
+                 &mo 2  &mo 3  &kp SPACE     &kp BSPC  &trans  &trans
                         >;
                 };
 
-                lower_layer {
+                NAV_L {
 // 
-// |  !  |  @  |  #  |  $  |  %  |     |  ^  |  &  |  *  |  (  |  )  |
-// |     |     |     |     |     |     | LFT | DWN |  UP | RGT |     |
+// |     | UP  |     |     |     |     |     |     |     |     |     |
+// | LFT | DWN | RGT |     |     |     |     |     |     |     |     |
 // |     |     |     |     |     |     |     |     |     |     |     |
-//             |     |     | SPC |     | ENT | ESC | TAB |
-                        display-name = "Lower";
+//             |     |     | SPC |     | BSP |     |     |
+                        display-name = "NAV";
                         bindings = <
-   &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT        &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR  &kp RPAR
-   &trans  &trans  &trans  &trans  &trans      &kp LEFT  &kp DOWN  &kp UP          &kp RIGHT &trans 
-   &trans    &trans       &trans       &trans       &trans           &trans    &trans    &trans          &trans    &trans 
-                             &trans      &trans       &kp SPACE        AS(RET)   &kp ESC   &kp TAB
+   &trans   &kp UP   &trans    &trans  &trans      &trans  &trans  &trans  &trans  &trans
+   &kp LEFT &kp DOWN &kp RIGHT &trans  &trans      &trans  &trans  &trans  &trans  &trans 
+   &trans   &trans   &trans    &trans  &trans      &trans  &trans  &trans  &trans  &trans 
+                     &trans    &trans  &kp SPACE   &kp BSPC  &trans  &trans
                         >;
                 };
 
-                raise_layer {
+                NUM_L {
+// 
+// | DEL |  7  |  8  |  9  |  -  |     |     |     |     |     |     |
+// |     |  4  |  5  |  6  |  .  |     |     |     |     |     |     |
+// |     |  1  |  2  |  3  |  0  |     |     |     |     |     |     |
+//             |     |     | SPC |     | BSP |     |     |
+                        display-name = "NUM";
+                        bindings = <
+   &kp DEL &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_MINUS   &trans  &trans  &trans  &trans  &trans
+   &trans  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_DOT     &trans  &trans  &trans  &trans  &trans 
+   &trans  &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_N0      &trans  &trans  &trans  &trans  &trans 
+                      &trans     &trans     &kp SPACE      &kp BSPC  &trans  &trans
+                        >;
+                };
+
+                SYM_L {
 // 
 // | 1!    | 2@  | 3#  | 4$  | 5%  |     |  6^ |  7& |  8* |  9(  |  0)  |
 // | |\    | `~  |     |     |     |     |     |     |  =+ |  -_  |  ;:  |
 // | BTCLR | BT1 | BT2 | BT3 |     |     |     |     |     |      |      |
-//               |     |     | SPC |     | ENT |     | DEL |
-                        display-name = "Raise";
+//               |     |     | SPC |     | BSP |     | DEL |
+                        display-name = "SYM";
                         bindings = <
-
    AS(N1)     AS(N2)       AS(N3)       AS(N4)       AS(N5)     AS(N6)   AS(N7)   AS(N8)    AS(N9)    AS(N0)
    AS(MINUS)  AS(GRAVE)    &trans       &trans       &trans     &trans   &trans   AS(EQUAL) AS(MINUS) AS(SEMI)
    &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &trans     &trans   &trans   &trans    &trans    &trans
-                           &trans       &trans       &kp SPACE  &kp RET2  &trans  &kp DEL
+                           &trans       &trans       &kp SPACE  &kp BSPC   &trans  &kp DEL
                         >;
                 };
         };
