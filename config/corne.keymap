@@ -8,10 +8,10 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-#define BAS_L 0
-#define SYM_L 1
-#define NAV_L 2
-#define NUM_L 3
+#define BAS 0
+#define SYM 1
+#define NAV 2
+#define NUM 3
 
 #define AS(keycode) &as LS(keycode) keycode
 
@@ -33,6 +33,26 @@
             key-positions = <0 1>;
             bindings = <&kp ESC>;
         };
+        combo_tab {
+            timeout-ms = <50>;
+            key-positions = <11 12>;
+            bindings = <&kp TAB>;
+        };
+        combo_enterleft {
+            timeout-ms = <50>;
+            key-positions = <12 13>;
+            bindings = <&kp ENTER>;
+        };
+        combo_enterright {
+            timeout-ms = <50>;
+            key-positions = <17 18>;
+            bindings = <&kp ENTER>;
+        };
+        combo_caps {
+            timeout-ms = <50>;
+            key-positions = <13 16>;
+            bindings = <&kp CAPS>;
+        };
     };
 
     chosen {
@@ -52,63 +72,63 @@
         keymap {
                 compatible = "zmk,keymap";
 
-                default_layer {
+                BASE {
 // 
 // |  Q  |  W  |  E  |  R  |  T  |     |  Y  |  U  |  I  |  O  |  P  |
 // |  A  |  S  |  D  |  F  |  G  |     |  H  |  J  |  K  |  L  |  '  | 
 // |  Z  |  X  |  C  |  V  |  B  |     |  N  |  M  |  ,  |  .  |  ?  |
-//             | NAV | NUM | SPC |     | BSP |     |     |
-                        display-name = "BAS;
+//             | NUM | NAV | SPC |     | BSP |     |     |
+                        display-name = "BASE";
                         bindings = <
-   &kp Q  &kp W  &kp E  &kp R  &kp T         &kp Y     &kp U  &kp I      &kp O    &kp P
-   LS(A)  LC(S)  LA(D)  LG(F)  &kp G         &kp H     RG(J)  RA(K)      RC(L)    RS(SQT)
-   LS(Z)  &kp X  &kp C  &kp V  &kp B         &kp N     &kp M  &kp COMMA  &kp DOT  RS(FSLH)
-                 &mo 2  &mo 3  &kp SPACE     &kp BSPC  &trans  &trans
+   &kp Q  &kp W  &kp E  &kp R  &kp T           &kp Y     &kp U   &kp I      &kp O    &kp P
+   LS(A)  LC(S)  LA(D)  LG(F)  &kp G           &kp H     RG(J)   RA(K)      RC(L)    RS(SQT)
+   LS(Z)  &kp X  &kp C  &kp V  &kp B           &kp N     &kp M   &kp COMMA  &kp DOT  RS(FSLH)
+                 &mo 3  &mo 2  &kp SYM SPACE   &kp BSPC  &trans  &trans
                         >;
                 };
 
-                NAV_L {
+                SYM {
 // 
-// |     | UP  |     |     |     |     |     |     |     |     |     |
-// | LFT | DWN | RGT |     |     |     |     |     |     |     |     |
-// |     |     |     |     |     |     |     |     |     |     |     |
-//             |     |     | SPC |     | BSP |     |     |
-                        display-name = "NAV";
-                        bindings = <
-   &trans   &kp UP   &trans    &trans  &trans      &trans  &trans  &trans  &trans  &trans
-   &kp LEFT &kp DOWN &kp RIGHT &trans  &trans      &trans  &trans  &trans  &trans  &trans 
-   &trans   &trans   &trans    &trans  &trans      &trans  &trans  &trans  &trans  &trans 
-                     &trans    &trans  &kp SPACE   &kp BSPC  &trans  &trans
-                        >;
-                };
-
-                NUM_L {
-// 
-// | DEL |  7  |  8  |  9  |  -  |     |     |     |     |     |     |
-// |     |  4  |  5  |  6  |  .  |     |     |     |     |     |     |
-// |     |  1  |  2  |  3  |  0  |     |     |     |     |     |     |
-//             |     |     | SPC |     | BSP |     |     |
-                        display-name = "NUM";
-                        bindings = <
-   &kp DEL &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_MINUS   &trans  &trans  &trans  &trans  &trans
-   &trans  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_DOT     &trans  &trans  &trans  &trans  &trans 
-   &trans  &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_N0      &trans  &trans  &trans  &trans  &trans 
-                      &trans     &trans     &kp SPACE      &kp BSPC  &trans  &trans
-                        >;
-                };
-
-                SYM_L {
-// 
-// | 1!    | 2@  | 3#  | 4$  | 5%  |     |  6^ |  7& |  8* |  9(  |  0)  |
-// | |\    | `~  |     |     |     |     |     |     |  =+ |  -_  |  ;:  |
-// | BTCLR | BT1 | BT2 | BT3 |     |     |     |     |     |      |      |
-//               |     |     | SPC |     | BSP |     | DEL |
+// | 1! | 2@  | 3#  | 4$  | 5%  |     |  6^ |  7& |  8* |  9(  |  0)  |
+// | |\ | `~  |     |     |     |     |     |     |  =+ |  -_  |  ;:  |
+// |    |     |     | VDN | VUP |     |     |     |     |      |      |
+//            |     |     |  ▽  |     | DEL |     |     |
                         display-name = "SYM";
                         bindings = <
-   AS(N1)     AS(N2)       AS(N3)       AS(N4)       AS(N5)     AS(N6)   AS(N7)   AS(N8)    AS(N9)    AS(N0)
-   AS(MINUS)  AS(GRAVE)    &trans       &trans       &trans     &trans   &trans   AS(EQUAL) AS(MINUS) AS(SEMI)
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &trans     &trans   &trans   &trans    &trans    &trans
-                           &trans       &trans       &kp SPACE  &kp BSPC   &trans  &kp DEL
+   AS(N1)     AS(N2)      AS(N3)    AS(N4)     AS(N5)       AS(N6)    AS(N7)   AS(N8)    AS(N9)    AS(N0)
+   AS(MINUS)  AS(GRAVE)   &trans    &trans     &trans       &trans    &trans   AS(EQUAL) AS(MINUS) AS(SEMI)
+   &trans     &btrans     &trans    &C_VOL_DN  &C_VOL_UP    &trans    &trans   &trans    &trans
+                          &trans    &trans     &trans       &kp DEL  &trans   &trans
+                        >;
+                };
+
+                NAV {
+// 
+// |     |     | UP  |     |     |     | BTCLR | BT1 | BT2 | BT3 | BT4 |
+// | SFT | LFT | DWN | RGT | ALT |     |       |     |     |     |     |
+// | CMD |     |     |     |     |     |       |     |     |     |     |
+//             |     |  ▽  | SPC |     |       |     |     |
+                        display-name = "NAV";
+                        bindings = <
+   &trans    &trans   &kp UP   &trans    &trans       &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3
+   &trans    &kp LEFT &kp DOWN &kp RIGHT &kp LALT     &trans      &trans        &trans        &trans        &trans 
+   &kp LCMD  &trans   &trans   &trans    &trans       &trans      &trans        &trans        &trans        &trans 
+                      &trans   &trans   &lt SPACE     &trans      &trans        &trans
+                        >;
+                };
+
+                NUM {
+// 
+// |  7  |  8  |  9  |  -  |     |     |     |     |     |     |     |
+// |  4  |  5  |  6  |  .  |     |     |     |     |     |     |     |
+// |  1  |  2  |  3  |  0  |     |     |     |     |     |     |     |
+//             |  ▽  |     | SPC |     |     |     |     |
+                        display-name = "NUM";
+                        bindings = <
+   &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_MINUS &trans        &trans  &trans  &trans  &trans  &trans
+   &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_DOT   &trans        &trans  &trans  &trans  &trans  &trans 
+   &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_N0    &trans        &trans  &trans  &trans  &trans  &trans 
+                         &trans     &trans       &kp SPACE     &trans  &trans  &trans
                         >;
                 };
         };
