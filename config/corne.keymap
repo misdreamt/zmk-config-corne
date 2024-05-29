@@ -53,7 +53,6 @@
             key-positions = <13 16>;
             bindings = <&kp CAPS>;
         };
-    };
 
     chosen {
       zmk,matrix_transform = &five_column_transform;
@@ -98,7 +97,7 @@
    AS(N1)     AS(N2)      AS(N3)    AS(N4)     AS(N5)       AS(N6)    AS(N7)   AS(N8)    AS(N9)    AS(N0)
    AS(MINUS)  AS(GRAVE)   &trans    &trans     &trans       &trans    &trans   AS(EQUAL) AS(MINUS) AS(SEMI)
    &trans     &btrans     &trans    &C_VOL_DN  &C_VOL_UP    &trans    &trans   &trans    &trans
-                          &trans    &trans     &trans       &kp DEL  &trans   &trans
+                          &trans    &trans     &trans       &kp DEL   &trans   &trans
                         >;
                 };
 
@@ -113,7 +112,7 @@
    &trans    &trans   &kp UP   &trans    &trans       &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3
    &trans    &kp LEFT &kp DOWN &kp RIGHT &kp LALT     &trans      &trans        &trans        &trans        &trans 
    &kp LCMD  &trans   &trans   &trans    &trans       &trans      &trans        &trans        &trans        &trans 
-                      &trans   &trans   &lt SPACE     &trans      &trans        &trans
+                      &trans   &trans    &lt SPACE    &trans      &trans        &trans
                         >;
                 };
 
