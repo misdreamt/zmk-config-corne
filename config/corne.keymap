@@ -35,12 +35,12 @@
         };
         combo_tab {
             timeout-ms = <50>;
-            key-positions = <11 12>;
+            key-positions = <12 13>;
             bindings = <&kp TAB>;
         };
         combo_enterleft {
             timeout-ms = <50>;
-            key-positions = <12 13>;
+            key-positions = <11 12>;
             bindings = <&kp ENTER>;
         };
         combo_enterright {
@@ -73,55 +73,55 @@
 
                 BASE {
 // 
-// |  Q  |  W  |  E  |  R  |  T  |     |  Y  |  U  |  I  |  O  |  P  |
-// |  A  |  S  |  D  |  F  |  G  |     |  H  |  J  |  K  |  L  |  '  | 
-// |  Z  |  X  |  C  |  V  |  B  |     |  N  |  M  |  ,  |  .  |  ?  |
-//             | NUM | NAV | SPC |     | BSP |     |     |
+// |  Q  |  W  |  E  |  R  |  T  |      |  Y  |  U  |  I  |  O  |  P  |
+// |  A  |  S  |  D  |  F  |  G  |      |  H  |  J  |  K  |  L  |  '  | 
+// |  Z  |  X  |  C  |  V  |  B  |      |  N  |  M  |  ,  |  .  |  ?  |
+//             | NUM | NAV | SPC |      | BSP | SYM |     |
                         display-name = "BASE";
                         bindings = <
-   &kp Q  &kp W  &kp E  &kp R  &kp T           &kp Y     &kp U   &kp I      &kp O    &kp P
-   LS(A)  LC(S)  LA(D)  LG(F)  &kp G           &kp H     RG(J)   RA(K)      RC(L)    RS(SQT)
-   LS(Z)  &kp X  &kp C  &kp V  &kp B           &kp N     &kp M   &kp COMMA  &kp DOT  RS(FSLH)
-                 &mo 3  &mo 2  &kp SYM SPACE   &kp BSPC  &trans  &trans
+   &kp Q  &kp W  &kp E  &kp R  &kp T           &kp Y     &kp      &kp I      &kp O    &kp P
+   LS(A)  LC(S)  LA(D)  LG(F)  &kp G           &kp H     RG(J)    RA(K)      RC(L)    RS(SQT)
+   LS(Z)  &kp X  &kp C  &kp V  &kp B           &kp N     &kp M    &kp COMMA  &kp DOT  RS(FSLH)
+                 &mo 3  &mo 2  &lt SYM SPACE   &kp BSPC  &mo 2    &trans
                         >;
                 };
 
                 SYM {
 // 
-// | 1! | 2@  | 3#  | 4$  | 5%  |     |  6^ |  7& |  8* |  9(  |  0)  |
-// | |\ | `~  |     |     |     |     |     |     |  =+ |  -_  |  ;:  |
-// |    |     |     | VDN | VUP |     |     |     |     |      |      |
-//            |     |     |  ▽  |     | DEL |     |     |
+// | 1!  | 2@  | 3#  | 4$  | 5%  |      | 6^  | 7&  | 8*  | 9(  | 0)  |
+// | 6^  | 7&  | 8*  | 9(  | 0)  |      |     |     | =+  | -_  | ;:  |
+// | |\  | `~  |     | VDN | VUP |      |     |     |     |     |     |
+//             |     |     |  ▽  |      | DEL |  ▽  |     |
                         display-name = "SYM";
                         bindings = <
-   AS(N1)     AS(N2)      AS(N3)    AS(N4)     AS(N5)       AS(N6)    AS(N7)   AS(N8)    AS(N9)    AS(N0)
-   AS(MINUS)  AS(GRAVE)   &trans    &trans     &trans       &trans    &trans   AS(EQUAL) AS(MINUS) AS(SEMI)
-   &trans     &btrans     &trans    &C_VOL_DN  &C_VOL_UP    &trans    &trans   &trans    &trans
-                          &trans    &trans     &trans       &kp DEL   &trans   &trans
-                        >;
+   AS(N1)     AS(N2)      AS(N3)    AS(N4)         AS(N5)         AS(N6)    AS(N7)   AS(N8)    AS(N9)    AS(N0)
+   AS(N6)     AS(N7)      AS(N8)    AS(N9)         AS(N0)         &trans    &trans   AS(EQUAL) AS(MINUS) AS(SEMI)
+   AS(MINUS)  AS(GRAVE)   &trans    &kp C_VOL_DN   &kp C_VOL_UP   &trans    &trans   &trans    &trans
+                          &trans    &trans         &trans         &kp DEL   &trans   &trans
+                       >;
                 };
 
                 NAV {
 // 
-// |     |     | UP  |     |     |     | BTCLR | BT1 | BT2 | BT3 | BT4 |
-// | SFT | LFT | DWN | RGT | ALT |     |       |     |     |     |     |
-// | CMD |     |     |     |     |     |       |     |     |     |     |
-//             |     |  ▽  | SPC |     |       |     |     |
+// |     |     | UP  |     |     |      | BTCLR | BT1 | BT2 | BT3 | BT4 |
+// | SFT | LFT | DWN | RGT | ALT |      |       |     |     |     |     |
+// | CMD |     |     |     |     |      |       |     |     |     |     |
+//             |     |  ▽  | SPC |      |       |     |     |
                         display-name = "NAV";
                         bindings = <
    &trans    &trans   &kp UP   &trans    &trans       &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3
-   &trans    &kp LEFT &kp DOWN &kp RIGHT &kp LALT     &trans      &trans        &trans        &trans        &trans 
+   &LSHIFT   &kp LEFT &kp DOWN &kp RIGHT &kp LALT     &trans      &trans        &trans        &trans        &trans 
    &kp LCMD  &trans   &trans   &trans    &trans       &trans      &trans        &trans        &trans        &trans 
-                      &trans   &trans    &lt SPACE    &trans      &trans        &trans
-                        >;
+                      &trans   &trans    &kp SPACE    &trans      &trans        &trans
+                       >;
                 };
 
                 NUM {
 // 
-// |  7  |  8  |  9  |  -  |     |     |     |     |     |     |     |
-// |  4  |  5  |  6  |  .  |     |     |     |     |     |     |     |
-// |  1  |  2  |  3  |  0  |     |     |     |     |     |     |     |
-//             |  ▽  |     | SPC |     |     |     |     |
+// |  7  |  8  |  9  |  -  |     |      |     |     |     |     |     |
+// |  4  |  5  |  6  |  .  |     |      |     |     |     |     |     |
+// |  1  |  2  |  3  |  0  |     |      |     |     |     |     |     |
+//             |  ▽  |     | SPC |      |     |     |     |
                         display-name = "NUM";
                         bindings = <
    &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_MINUS &trans        &trans  &trans  &trans  &trans  &trans
