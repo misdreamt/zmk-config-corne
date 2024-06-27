@@ -109,10 +109,10 @@
 //             |     |  ▽  | SPC |      |       |     |     |
                         display-name = "NAV";
                         bindings = <
-   &trans    &trans   &kp UP   &trans    &trans       &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3
-   &LSHIFT   &kp LEFT &kp DOWN &kp RIGHT &kp LALT     &trans      &trans        &trans        &trans        &trans 
-   &kp LCMD  &trans   &trans   &trans    &trans       &trans      &trans        &trans        &trans        &trans 
-                      &trans   &trans    &kp SPACE    &trans      &trans        &trans
+   &trans      &trans   &kp UP   &trans    &trans       &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3
+   &kp LSHIFT  &kp LEFT &kp DOWN &kp RIGHT &kp LALT     &trans      &trans        &trans        &trans        &trans 
+   &kp LCMD    &trans   &trans   &trans    &trans       &trans      &trans        &trans        &trans        &trans 
+                        &trans   &trans    &kp SPACE    &trans      &trans        &trans
                        >;
                 };
 
