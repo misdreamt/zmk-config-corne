@@ -92,9 +92,9 @@
 //             |     |     |  ▽  |      | DEL |  ▽  |     |
                         display-name = "SYM";
                         bindings = <
-   AS(N1)     AS(N2)      AS(N3)    AS(N4)         AS(N5)         AS(N6)    AS(N7)   AS(N8)    AS(N9)    AS(N0)
-   AS(N6)     AS(N7)      AS(N8)    AS(N9)         AS(N0)         &trans    &trans   AS(EQUAL) AS(MINUS) AS(SEMI)
-   AS(MINUS)  AS(GRAVE)   &trans    &kp C_VOL_DN   &kp C_VOL_UP   &trans    &trans   &trans    &trans
+   &as N1     &as N2      &as N3    &as N4         &as N5         &as N6    &as N7   &as N8    &as N9    &as N0
+   &as N6     &as N7      &as N8    &as N9         &as N0         &trans    &trans   &as EQUAL &as MINUS &as SEMI
+   &as MINUS  &as GRAVE   &trans    &kp C_VOL_DN   &kp C_VOL_UP   &trans    &trans   &trans    &trans
                           &trans    &trans         &trans         &kp DEL   &trans   &trans
                        >;
                 };
